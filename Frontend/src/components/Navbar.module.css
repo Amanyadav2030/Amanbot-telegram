@@ -1,0 +1,68 @@
+.myNavbar{
+    display: flex;
+    position: sticky;  
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    right: 0;
+    background-color: #0e1823;
+    z-index: 10;
+    padding: 0.6rem 0;
+  }
+  .logo{
+    padding-left: 4vw;
+  }
+  .logo h2{
+    color:#d2ae6d;
+  }
+  .links{
+    padding-right: 4vw;
+  }
+  .links ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .links li{
+    list-style: none;
+  }
+  .links li svg{
+    color: white;
+    font-size: 2.3rem;
+  } 
+  .links a,.links span{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    font-size:  1.25rem;
+  }
+  .links a:hover,.links span:hover{
+    color: white;
+    border-bottom: 2.8px solid white;
+  }
+  @media only screen and (max-width: 550px) {
+    .logo h2{
+      color:#d2ae6d;
+      font-size: 1.25rem;
+    }
+    .logo{
+      padding-left: 2.5vw;
+    }
+    .links ul{
+      display: none;
+    }
+    .links{
+      padding-right: 2.5vw;
+    }
+    .links a{
+      font-size: 1.15rem;
+    }
+    .links  svg{
+      color: white;
+      font-size: 1.95rem;
+    } 
+  }
+  
