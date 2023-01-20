@@ -8,6 +8,14 @@ export const getDataApi = async (token) => {
     let res = await axios(`${process.env.REACT_APP_BACKEND_API_KEY}task?id=${token}`);
     return res.data;
 }
+export const addTaskApi = async (data) => {
+    let res = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}task`,data);
+    return res.data;
+}
+export const updateTaskApi = async (id,data) => {
+    let res = await axios.patch(`${process.env.REACT_APP_BACKEND_API_KEY}task/${id}`,data);
+    return res.data;
+}
 export const deleteApi = async (id) => {
     let res = await axios.delete(`${process.env.REACT_APP_BACKEND_API_KEY}task/${id}`);
     return res.data;
