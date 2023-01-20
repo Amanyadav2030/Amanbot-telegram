@@ -54,22 +54,22 @@ bot.on('callback_query', (callbackQuery) => {
             break;
     }
 });
-// bot.on('message',(msg)=>{
-//     const chatId = msg.chat.id;
-//     switch (msg.text) {
-//         case '/add':
-//             bot.sendMessage(chatId,`please use /add like this /add title description...`);
-//             break;
-//         case '/delete':
-//             bot.sendMessage(chatId,`please use /delete like this /delete title`);
-//             break;
-//         case '/update':
-//             bot.sendMessage(chatId,`please use /update like this /update title status (only status can updated)`);
-//             break;
-//         default:
-//             break;
-//     }
-// })
+bot.on('message',(msg)=>{
+    const chatId = msg.chat.id;
+    switch (msg.text) {
+        case '/add':
+            bot.sendMessage(chatId,`please use /add like this /add title description...`);
+            break;
+        case '/delete':
+            bot.sendMessage(chatId,`please use /delete like this /delete title`);
+            break;
+        case '/update':
+            bot.sendMessage(chatId,`please use /update like this /update title status (only status can updated)`);
+            break;
+        default:
+            break;
+    }
+})
 
     // -----Get tasks-----
 bot.onText(/\/get/, async (msg, match) => {
