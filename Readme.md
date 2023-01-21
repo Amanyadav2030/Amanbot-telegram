@@ -4,13 +4,13 @@
 
 In case my deployed link is not working then you can refer my recorded video 
 # Instructions
-  - **/Click on above link you'll redirect to website** 
-  - **/Click on login button It will ask for authentication** 
-  - **/After authenticate again click on login button** 
-  - **/You can create tasks by click on Click to add card** 
-  - **/You can also delete card when you hover you'll see delete icon on top-right corner (x)**
-  - **/You can move card from one board to another**
-  - **/For Doing tasks via bot just click on botlogo in Navbar then you'll redirect to myBot**
+  - **Click on above link you'll redirect to website** 
+  - **Click on login button It will ask for authentication** 
+  - **After authenticate again click on login button** 
+  - **You can create tasks by click on Click to add card** 
+  - **You can also delete card when you hover you'll see delete icon on top-right corner (x)**
+  - **You can move card from one board to another**
+  - **For Doing tasks via bot just click on botlogo in Navbar then you'll redirect to myBot**
   -**
   
 # Telegram bot commands 👨‍💻
