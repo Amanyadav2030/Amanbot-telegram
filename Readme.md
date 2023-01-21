@@ -1,5 +1,5 @@
 
-# flamecloud_telegram_assignment <img src="https://aman-bot.vercel.app/static/media/bot.cd2b6f8a1f0bd1c1ad5d.png" width="3rem" height="4rem" alt="botLogo" />
+# flamecloud_telegram_assignment <img src="https://aman-bot.vercel.app/static/media/bot.cd2b6f8a1f0bd1c1ad5d.png" width="50" height="40"  alt="botLogo" />
 ## Deployed link: https://aman-bot.vercel.app/
 
 In case my deployed link is not working then you can refer my recorded video 
