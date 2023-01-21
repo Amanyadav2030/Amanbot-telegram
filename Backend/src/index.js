@@ -21,8 +21,9 @@ bot.onText(/\/start/, (msg) => {
     bot.sendMessage(chatId, 'Welcome! Please enter your username and password to authenticate.');
 });
    
-    // -----Help-----
 const commands = ['/add', '/update','/delete'];
+
+    // -----Help command-----
 bot.onText(/\/help/, (msg) => {
     const chatId = msg.chat.id;
     const opts = {
@@ -36,6 +37,7 @@ bot.onText(/\/help/, (msg) => {
     };
     bot.sendMessage(chatId, 'Here some  the available commands /get :)', opts);
 });
+    // -----Callback after clicking on helps commands-----
 bot.on('callback_query', (callbackQuery) => {
     const message = callbackQuery.message;
     const chatId = message.chat.id;
@@ -54,6 +56,7 @@ bot.on('callback_query', (callbackQuery) => {
             break;
     }
 });
+    // -----General Instructions command-----
 bot.on('message',(msg)=>{
     const chatId = msg.chat.id;
     switch (msg.text) {
@@ -71,10 +74,11 @@ bot.on('message',(msg)=>{
     }
 })
 
-    // -----Get tasks-----
+    // -----Get tasks command-----
 bot.onText(/\/get/, async (msg, match) => {
     const chatId = msg.chat.id;
     try {
+        // -----GetTasks() controller will take chatId and fetch all the tasks-----
         let res = await GetTasks(chatId);
         if(res.length==0){
             return  bot.sendMessage(chatId, `There is No tasks please create one via using (/add title description)`);
@@ -100,7 +104,7 @@ bot.onText(/\/get/, async (msg, match) => {
         bot.sendMessage(chatId, `There is an Error occur ${error}`);
     }
 });
-    // -----Add a task-----
+    // -----Add a task command-----
 bot.onText(/\/add (.*)/, async(msg, match) => {
     try {
         const chatId = msg.chat.id;
@@ -110,6 +114,7 @@ bot.onText(/\/add (.*)/, async(msg, match) => {
         for(let i=1;i<data.length;i++){
             description+=data[i]+" ";
         }
+        // -----AddTask() controller will take title,description, chatId and post task data -----
         let res  = await AddTask({title,description,chatId})
         if(res.title){
             bot.sendMessage(chatId, `Task created with title ${res.title}`);
@@ -121,7 +126,7 @@ bot.onText(/\/add (.*)/, async(msg, match) => {
     }
     
 });
-    // -----Login user-----
+    // -----Login user command-----
 bot.onText(/\/login/, async(msg, match) => {
     const chatId = msg.chat.id;
     try {
@@ -136,15 +141,17 @@ bot.onText(/\/login/, async(msg, match) => {
     }
 });
       
-    // -----Delete a task-----
+    // -----Delete  task command-----
 bot.onText(/\/delete (.*)/,async (msg, match) => {
-    const chatId = msg.chat.id;c
+    const chatId = msg.chat.id;
     try {
         const title = match[1];
+        // -----CheckTaskExist() controller will take chatId with title and will check title exist or not-----
         let task = await CheckTaskExist(chatId,title);
         if(!task){
             return bot.sendMessage(chatId, `Please click on /get and see valid tasks`);
         }
+        // -----DeleteTask() controller will take task id delete that task-----
         let deleted =await DeleteTask(task._id);
         console.log(deleted)
         bot.sendMessage(chatId, `task ${title} deleted successfully see available tasks /get`);
@@ -152,7 +159,7 @@ bot.onText(/\/delete (.*)/,async (msg, match) => {
         bot.sendMessage(chatId, `There is an Error occur ${error}`);
     }
 });
-// -----Update a task-----    
+    // -----Update task command-----    
 bot.onText(/\/update (.*)/, async(msg, match) => {
     const chatId = msg.chat.id;
     try {
@@ -162,10 +169,12 @@ bot.onText(/\/update (.*)/, async(msg, match) => {
         if(!status || (status!='todo'&&status!='pending'&&status!='done')){
             return bot.sendMessage(chatId, `Please Enter vallid status /update title status can be (todo, pending, done)`);
         }
+        // -----CheckTaskExist() controller will take chatId with title and will check title exist or not-----
         let task = await CheckTaskExist(chatId,title);
         if(!task){
             return bot.sendMessage(chatId, `Please click on /get and see valid tasks`);
         }
+        // -----MoveTask() controller will  task id and update the task's status -----
         let res = await MoveTask(task._id,status);
         bot.sendMessage(chatId, `Congratulations, ! Your title: ${title} has been updated with status: ${status}.`);
     } catch (error) {
